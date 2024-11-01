@@ -1,0 +1,396 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background: rgb(255 192 112);
+    transition: all 0.3s ease;
+}
+
+header.scrolled {
+    background: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-weight: bold;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #000;
+}
+
+/* Hero Section */
+.hero {
+    background: rgb(255 192 112) url('images/background.png') no-repeat center center;
+    background-size: contain;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 80px 50px 0 50px;
+}
+
+.hero h1 {
+    font-size: 120px;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: white;
+    font-size: 24px;
+    max-width: 500px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    background: rgb(201 243 240);
+    border: none;
+    padding: 15px 40px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* About Section */
+#about {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+#about h2 {
+    margin-bottom: 30px;
+    font-size: 32px;
+}
+
+#about p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Products Section */
+.products {
+    background: rgb(201 243 240);
+    padding: 100px 50px;
+    text-align: center;
+}
+
+.products h2 {
+    margin-bottom: 50px;
+    font-size: 32px;
+}
+
+.products > div {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.products img {
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    margin-bottom: 20px;
+}
+
+.products button {
+    background: rgb(255 192 112);
+    border: none;
+    padding: 10px 30px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+/* Rules Section */
+.rules {
+    background: url('images/bg-grid.png') no-repeat center center;
+    padding: 100px 50px;
+    gap: 50px;
+}
+
+.rules > div {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.rules > div > div {
+    flex: 1;
+}
+
+.rules h2 {
+    font-size: 32px;
+    margin-bottom: 30px;
+}
+
+.rules p {
+    line-height: 1.6;
+}
+
+.rules img {
+    width: 100%;
+    border-radius: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Burger Menu (Hidden by default) */
+.burger {
+    display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgb(255 192 112);
+        padding-top: 80px;
+        transition: 0.3s ease;
+        display: block;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    nav a {
+        font-size: 24px;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .products > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rules {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .rules > div {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .rules > div > div {
+        flex: none;
+        width: 100%;
+    }
+    
+    .hero h1 {
+        font-size: 80px;
+    }
+    
+    footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Burger Menu */
+.burger {
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+    z-index: 20;
+}
+
+.burger span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: black;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+.burger span:nth-child(1) {
+    top: 0;
+}
+
+.burger span:nth-child(2) {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.burger span:nth-child(3) {
+    bottom: 0;
+}
+
+/* X animation when active */
+.burger.active span:nth-child(1) {
+    transform: rotate(45deg);
+    top: 50%;
+}
+
+.burger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger.active span:nth-child(3) {
+    transform: rotate(-45deg);
+    bottom: 40%;
+}
+
+/* Mobile nav styles */
+@media (max-width: 768px) {
+    nav {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgb(255 192 112);
+        padding-top: 80px;
+        transition: 0.3s ease;
+        display: block;
+    }
+    
+    nav.active {
+        right: 0;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    nav a {
+        font-size: 24px;
+    }
+    
+    .burger {
+        display: block;
+    }
+    
+    .products > div {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .rules {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .rules > div {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .rules > div > div {
+        flex: none;
+        width: 100%;
+    }
+    
+    .hero h1 {
+        font-size: 80px;
+    }
+    
+    footer {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    footer ul {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Scroll Reveal Animations */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Variasi animasi */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.8s ease;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease;
+}
+
+.reveal-left.active,
+.reveal-right.active {
+    opacity: 1;
+    transform: translateX(0);
+}
